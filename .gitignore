@@ -1,0 +1,13 @@
+### GITIGNORE
+
+# PyCharm Project Files
+.idea
+*.iml
+out
+gen
+
+# Python Specific
+HeheHaha.txt
+Trial.py
+/Logs
+
