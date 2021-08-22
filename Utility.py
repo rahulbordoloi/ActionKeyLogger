@@ -19,3 +19,5 @@ def checkFileSize(filePath):
     with open(filePath, "r") as f:
         f.seek(0, os.SEEK_END)
         return f.tell()
+
+
