@@ -21,13 +21,3 @@ def checkFileSize(filePath):
         return f.tell()
 
 
-# Mouse Button Action to Text
-def mouseBtnActionToText(actionName):
-
-    if actionName == 'Button.middle':
-        return 'Middle Button'
-    elif actionName == 'Button.left':
-        return 'Left Button'
-    else:
-        return 'Right Button'
-
