@@ -1,6 +1,6 @@
 # Importing Libraries
 from pynput import mouse
-from Utility import checkLogDir, checkFileSize, logFormatterString, currentLocalTime, mouseBtnActionToText
+from Utility import checkLogDir, checkFileSize, logFormatterString, currentLocalTime
 from time import time
 
 
@@ -14,6 +14,17 @@ class mouseLogger:
     # Default Constructor
     def __init__(self):
         pass
+
+    # Mouse Button Action to Text
+    @staticmethod
+    def mouseBtnActionToText(actionName):
+
+        if actionName == 'Button.middle':
+            return 'Middle Button'
+        elif actionName == 'Button.left':
+            return 'Left Button'
+        else:
+            return 'Right Button'
 
     # Method `onMove`
     """
@@ -39,7 +50,7 @@ class mouseLogger:
         ## Mouse Action Taken
         actionTaken = '{0} {1} at {2}'.format(
             'Pressed' if pressed else 'Released',
-            mouseBtnActionToText(str(button)),
+            mouseLogger.mouseBtnActionToText(str(button)),
             (x, y))
 
         ## Appending Keys and Changing the Count
