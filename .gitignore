@@ -10,4 +10,5 @@ gen
 HeheHaha.txt
 Trial.py
 /Logs
+*.env
 
