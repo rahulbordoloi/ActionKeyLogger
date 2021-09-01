@@ -1,1 +1,2 @@
-pynput==1.7.3
+pynput<=1.7.3
+python-dotenv<=0.19.0
